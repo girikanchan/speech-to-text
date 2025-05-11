@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import './index.css';
 
 const SpeechToTextApp = () => {
   const [isListening, setIsListening] = useState(false);
@@ -59,35 +60,25 @@ const SpeechToTextApp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 text-gray-900">
-      <div className="max-w-2xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-center">🗣️ Speech to Text Converter</h1>
+    <div className="app-container">
+      <div className="content">
+        <h1 className="title">🗣️ Speech to Text Converter</h1>
 
         <textarea
           value={transcript}
           readOnly
           placeholder="Your speech will appear here..."
-          className="w-full h-48 p-4 border rounded resize-none"
+          className="transcript-box"
         />
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="button-group">
           {!isListening ? (
-            <button onClick={startListening} className="bg-green-500 text-white px-4 py-2 rounded">
-              🎙️ Start Listening
-            </button>
+            <button onClick={startListening} className="start-button">🎙️ Start Listening</button>
           ) : (
-            <button onClick={stopListening} className="bg-red-500 text-white px-4 py-2 rounded">
-              🛑 Stop
-            </button>
+            <button onClick={stopListening} className="stop-button">🛑 Stop</button>
           )}
-
-          <button onClick={clearTranscript} className="bg-gray-500 text-white px-4 py-2 rounded">
-            🧹 Clear
-          </button>
-
-          <button onClick={downloadTranscript} className="bg-blue-500 text-white px-4 py-2 rounded">
-            💾 Save Text
-          </button>
+          <button onClick={clearTranscript} className="clear-button">🧹 Clear</button>
+          <button onClick={downloadTranscript} className="save-button">💾 Save Text</button>
         </div>
       </div>
     </div>
